@@ -38,6 +38,16 @@
         </div>
     </div>
 </div>
+
+<div class="container">
+    <div class="collection-hero__text-wrapper">
+        <h1 class="collection-hero__title">
+            {% if request.path == url_for('main.market') %}
+                Caballero
+            {% endif %}
+        </h1>
+    </div>
+</div>
 {% endblock %}
 
 {% block content %}

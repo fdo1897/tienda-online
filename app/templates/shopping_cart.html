@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+
+
 {% block content %}
   <h1>Carrito de compras</h1>
 
@@ -7,8 +9,12 @@
     <thead>
       <tr>
         <th>ID</th>
+        <th>Imagen</th>
         <th>Nombre</th>
         <th>Precio</th>
+        <th>Tamaño</th>
+        <th>Color</th>
+        <th>Género</th>
         <th>Acciones</th>
       </tr>
     </thead>
@@ -16,8 +22,12 @@
       {% for purchase in purchases %}
         <tr>
           <td>{{ purchase.id }}</td>
+          <td><img src="{{ url_for('static', filename=purchase.shoe.image) }}" alt="Imagen del zapato" width="100"></td>
           <td>{{ purchase.shoe.name }}</td>
           <td>{{ purchase.shoe.price }}</td>
+          <td>{{ purchase.shoe.size }}</td>
+          <td>{{ purchase.shoe.color }}</td>
+          <td>{{ purchase.shoe.category.gender }}</td>
           <td>
             <form method="post" action="{{ url_for('main.remove_from_cart', purchase_id=purchase.id) }}">
               <button type="submit" class="btn btn-danger">Eliminar</button>
