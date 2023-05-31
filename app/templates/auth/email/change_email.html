@@ -1,0 +1,7 @@
+<p>estimad@ {{ user.username }},</p>
+<p>Para confirmar su nueva dirección de correo electrónico<a href="{{ url_for('auth.change_email', token=token, _external=True) }}">click aqui</a>.</p>
+<p>Como alternativa, puede pegar el siguiente enlace en la barra de direcciones de su navegador:</p>
+<p>{{ url_for('auth.change_email', token=token, _external=True) }}</p>
+<p>Atentamente,</p>
+<p>Zapateria M&A</p>
+

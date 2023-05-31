@@ -1,0 +1,11 @@
+Estimad@ {{ user.username }},
+
+Para confirmar su nueva dirección de correo electrónico, haga clic en el siguiente enlace:
+
+{{ url_for('auth.change_email', token=token, _external=True) }}
+
+Atentamente,
+
+Zapateria M&A
+
+

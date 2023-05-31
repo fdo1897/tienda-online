@@ -1,0 +1,62 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}Zapateria M&A{% endblock %}
+
+
+{% block navbar %}
+<div class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ url_for('main.index') }}">Home</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="{{ url_for('main.market') }}">Catalogo</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% if current_user.is_authenticated %}
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menú <b class="caret"></b></a>
+                    <!-- Agregamos el enlace "#", que es necesario para que el menú desplegable funcione -->
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ url_for('auth.change_password') }}">Cambiar contraseña</a></li>
+                        <li><a href="{{ url_for('auth.change_email_request') }}">Cambiar Email</a></li>
+                        <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
+                        <li><a href="{{ url_for('main.shopping_cart') }}">Carrito de compras</a></li>
+                    </ul>
+                </li>
+                {% else %}
+                <li><a href="{{ url_for('auth.login') }}">Log In</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+    </div>
+    {% endfor %}
+
+    {% block page_content %}{% endblock %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{{ moment.include_moment() }}
+<!-- Asegúrate de incluir los siguientes scripts necesarios para el funcionamiento de Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock %}

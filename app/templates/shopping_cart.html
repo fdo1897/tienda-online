@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Carrito de compras</h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for purchase in purchases %}
+        <tr>
+          <td>{{ purchase.id }}</td>
+          <td>{{ purchase.shoe.name }}</td>
+          <td>{{ purchase.shoe.price }}</td>
+          <td>
+            <form method="post" action="{{ url_for('main.remove_from_cart', purchase_id=purchase.id) }}">
+              <button type="submit" class="btn btn-danger">Eliminar</button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

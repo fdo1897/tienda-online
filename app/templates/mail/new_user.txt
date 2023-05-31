@@ -1,0 +1,1 @@
+El usuario {{ user.username }} se ha unido.

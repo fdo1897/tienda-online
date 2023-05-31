@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Detalles del Zapato
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <img src="{{ url_for('static', filename=shoe.image) }}" alt="Shoe Image" class="img-fluid" style="max-width: 250px;">
+      <h2>{{ shoe.name }}</h2>
+      <p>Descripción: {{ shoe.description }}</p>
+      <p>Material: {{ shoe.material }}</p>
+      <p>Precio: {{ shoe.price }}</p> 
+      <p>Género: {{ shoe.category.gender }}</p>
+      <p>Color: {{ shoe.color }}</p> 
+
+      <form method="POST" action="{{ url_for('.shoe_details', shoe_id=shoe.id) }}">
+        {{ purchase_form.csrf_token }}
+        {{ purchase_form.submit(class="btn btn-primary") }}
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

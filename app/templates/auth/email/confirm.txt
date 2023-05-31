@@ -1,0 +1,13 @@
+Estimad@ {{ user.username }},
+
+Bienvindo a la Zapateria M&A!
+
+Para confirmar su cuenta, haga clic en el siguiente enlace:
+
+{{ url_for('auth.confirm', token=token, _external=True) }}
+
+Atentamente,
+
+Zapateria M&A
+
+Note: replies to this email address are not monitored.

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Confirme su cuenta{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>
+        Hola, {{ current_user.username }}!
+    </h1>
+    <h3>Aún no has confirmado tu cuenta.</h3>
+    <p>
+        Antes de poder acceder a este sitio, debe confirmar su cuenta.
+        Revisa tu bandeja de entrada, deberías haber recibido un correo electrónico con un enlace de confirmación.
+    </p>
+    <p>
+        ¿Necesita otro correo electrónico de confirmación?
+        <a href="{{ url_for('auth.resend_confirmation') }}">Click aqui</a>
+    </p>
+</div>
+{% endblock %}

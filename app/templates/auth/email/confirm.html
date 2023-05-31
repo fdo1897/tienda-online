@@ -1,0 +1,8 @@
+<p>Estimad@ {{ user.username }},</p>
+<p>Bienvenido a <b>la Zapateria M&A!</b>!</p>
+<p>Para confirmar su cuenta por favor <a href="{{ url_for('auth.confirm', token=token, _external=True) }}">click aqui</a>.</p>
+<p>Como alternativa, puede pegar el siguiente enlace en la barra de direcciones de su navegador:</p>
+<p>{{ url_for('auth.confirm', token=token, _external=True) }}</p>
+<p>Atentamente,</p>
+<p>Zapateria M&A</p>
+

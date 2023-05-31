@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% import "_macros.html" as macros %}
+
+{% block title %}
+  Zapatos
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row d-flex"> <!-- Se agrega la clase d-flex para establecer un contenedor flexible en la fila -->
+    {% for shoe in shoes %}
+    <div class="col-md-2"> <!-- Se utiliza col-md-4 para que cada zapato ocupe 4 columnas en pantallas medianas y grandes -->
+      <div style="max-width: 180px;"> <!-- Se agrega un contenedor con ancho máximo de 180 píxeles -->
+        <a href="{{ url_for('main.shoe_details', shoe_id=shoe.id) }}"><!-- Se corrige el nombre del endpoint 'shoe_details' por 'main.shoes_details' -->
+          <img src="{{ url_for('static', filename=shoe.image) }}" alt="Shoe Image" class="img-fluid" style="max-width: 180px;">
+        </a>
+        <a href="{{ url_for('main.shoe_details', shoe_id=shoe.id) }}" class="mt-2 img-fluid" style="overflow-wrap: break-word; color: black;">Descripción: {{ shoe.description }}</a> <!-- Se corrige el nombre del endpoint 'shoe_details' por 'main.shoes_details' -->
+        <p class="mt-2 img-fluid">Precio: {{ shoe.price }}$</p>
+        
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<div class="pagination">
+  {{ macros.pagination_widget(pagination, endpoint) }}
+</div>
+{% endblock %}
